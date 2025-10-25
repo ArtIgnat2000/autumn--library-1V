@@ -162,56 +162,52 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Поиск по книгам
     function createSearchBox() {
+        // HTML: input + кнопка очистки
         const searchHTML = `
-            <div class="search-container" style="
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(20px);
-                padding: 16px 20px;
-                margin: 16px 0;
-                border-radius: 12px;
-                border: 0.5px solid var(--ios-separator);
-            ">
-                <input type="text" id="bookSearch" placeholder="Поиск книг..." style="
-                    width: 100%;
-                    padding: 12px 16px;
-                    border: 1px solid var(--ios-separator);
-                    border-radius: 8px;
-                    font-size: 1rem;
-                    background: var(--ios-gray-light);
-                    outline: none;
-                    transition: border-color 0.2s ease;
-                ">
+            <div class="search-container">
+                <input type="text" id="bookSearch" placeholder="Поиск книг...">
+                <button type="button" id="clearSearch" class="search-clear" title="Очистить поиск">✖</button>
             </div>
         `;
-        
+
         const firstSection = document.querySelector('section');
         firstSection.insertAdjacentHTML('beforebegin', searchHTML);
-        
+
         // Обработчик поиска
         const searchInput = document.getElementById('bookSearch');
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
+        const clearBtn = document.getElementById('clearSearch');
+
+        function filterBooks() {
+            const searchTerm = searchInput.value.toLowerCase();
             const bookItems = document.querySelectorAll('li');
-            
+
             bookItems.forEach(item => {
                 const bookTitle = item.querySelector('.book-link')?.textContent.toLowerCase() || '';
-                if (bookTitle.includes(searchTerm)) {
+                if (!searchTerm || bookTitle.includes(searchTerm)) {
                     item.style.display = 'block';
                 } else {
                     item.style.display = 'none';
                 }
             });
+        }
+
+        searchInput.addEventListener('input', filterBooks);
+
+        // Очистка поля поиска по кнопке
+        clearBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            searchInput.value = '';
+            filterBooks();
+            searchInput.focus();
         });
-        
-        // Стили для фокуса
+
+        // Визуальные состояния (фокус/blur) — управляем через CSS, но добавим небольшой accessibility-акцент
         searchInput.addEventListener('focus', function() {
-            this.style.borderColor = 'var(--ios-blue)';
-            this.style.backgroundColor = 'var(--ios-background)';
+            this.classList.add('focused');
         });
-        
+
         searchInput.addEventListener('blur', function() {
-            this.style.borderColor = 'var(--ios-separator)';
-            this.style.backgroundColor = 'var(--ios-gray-light)';
+            this.classList.remove('focused');
         });
     }
     

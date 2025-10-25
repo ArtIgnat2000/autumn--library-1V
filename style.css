@@ -138,20 +138,58 @@ section > div {
 }
 
 /* Search box styles (overrides inline styles from script.js for better theme control) */
-.search-container input {
-    width: 100%;
+.search-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 12px 16px;
+    margin: 16px 0;
+    border-radius: 12px;
+    border: 0.5px solid var(--ios-separator);
+}
+
+.search-container input {
+    flex: 1 1 auto;
+    width: 100%;
+    padding: 10px 12px;
     border: 1px solid var(--ios-separator);
     border-radius: 8px;
     font-size: 1rem;
     background: var(--ios-gray-light);
     color: var(--ios-text-primary);
     outline: none;
-    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.12s ease;
 }
 
 .search-container input::placeholder {
     color: rgba(60,60,67,0.6);
+}
+
+.search-container .search-clear {
+    background: transparent;
+    border: none;
+    color: var(--ios-text-secondary);
+    font-size: 1.1rem;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.08s ease;
+}
+
+.search-container .search-clear:hover {
+    background: var(--ios-gray-light);
+    color: var(--ios-text-primary);
+    transform: scale(1.03);
+}
+
+.search-container .search-clear:active {
+    transform: scale(0.97);
 }
 
 h2 {
@@ -341,6 +379,20 @@ footer p {
 
     .search-container input::placeholder {
         color: rgba(235,235,245,0.5);
+    }
+    
+    .search-container {
+        background: rgba(28,28,30,0.6);
+        border-color: var(--ios-separator);
+    }
+
+    .search-container .search-clear {
+        color: rgba(235,235,245,0.8);
+    }
+
+    .search-container .search-clear:hover {
+        background: rgba(255,255,255,0.04);
+        color: var(--ios-text-primary);
     }
 }
 
