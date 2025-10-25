@@ -551,6 +551,10 @@ footer p {
     color: var(--ios-text-secondary);
 }
 
+[data-theme="light"] li:hover {
+    background: #E5E5EA !important;
+}
+
 [data-theme="dark"] li.read .book-link {
     color: var(--ios-text-secondary);
 }
