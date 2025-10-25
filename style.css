@@ -215,7 +215,7 @@ section > div {
 
 .search-container input {
     /* make input narrower so it doesn't visually overlap the clear button */
-    width: calc(100% - 100px);
+    width: calc(100% - 110px);
     padding: 10px 12px;
     padding-right: 12px;
     border: 1px solid var(--ios-separator);
@@ -235,7 +235,7 @@ section > div {
 
 .search-container .search-clear {
     position: absolute;
-    right: 16px;
+    right: 24px;
     top: 50%;
     transform: translateY(-50%);
     /* brighter, prominent style so it's always visible */
@@ -245,7 +245,7 @@ section > div {
     font-size: 0.85rem;
     font-weight: 600;
     padding: 6px 12px;
-    border-radius: 10px;
+    border-radius: 16px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -260,11 +260,11 @@ section > div {
 .search-container .search-clear:hover {
     background: var(--ios-blue-light);
     color: white;
-    transform: scale(1.03);
+    transform: translateY(-50%) scale(1.03);
 }
 
 .search-container .search-clear:active {
-    transform: scale(0.97);
+    transform: translateY(-50%) scale(0.97);
 }
 
 h2 {
