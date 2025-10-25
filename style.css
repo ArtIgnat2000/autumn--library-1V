@@ -505,7 +505,9 @@ footer p {
 
 /* Light mode fixes for iPhone */
 [data-theme="light"] nav {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 [data-theme="light"] nav a {
@@ -531,6 +533,17 @@ footer p {
 
 [data-theme="light"] .search-container input::placeholder {
     color: rgba(60,60,67,0.6);
+}
+
+[data-theme="light"] .search-container .search-clear {
+    background: var(--ios-blue) !important;
+    color: white !important;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .search-container .search-clear:hover {
+    background: var(--ios-blue-light) !important;
+    color: white !important;
 }
 
 /* Fix read book styling for both themes */
