@@ -503,4 +503,23 @@ footer p {
     .search-container .search-clear { padding: 10px; font-size: 1.2rem; }
 }
 
+/* Explicit variable overrides for data-theme on :root to ensure JS-applied theme wins over prefers-color-scheme */
+:root[data-theme="dark"] {
+    --ios-background: #1C1C1E;
+    --ios-secondary-background: #000000;
+    --ios-text-primary: #FFFFFF;
+    --ios-text-secondary: #EBEBF5;
+    --ios-gray-light: #2C2C2E;
+    --ios-separator: #38383A;
+}
+
+:root[data-theme="light"] {
+    --ios-background: #FFFFFF;
+    --ios-secondary-background: #F2F2F7;
+    --ios-text-primary: #000000;
+    --ios-text-secondary: #3C3C43;
+    --ios-gray-light: #F2F2F7;
+    --ios-separator: #C6C6C8;
+}
+
 

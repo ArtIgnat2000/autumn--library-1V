@@ -253,13 +253,13 @@ document.addEventListener('DOMContentLoaded', function() {
             document.documentElement.classList.add('theme-transition');
             window.setTimeout(() => document.documentElement.classList.remove('theme-transition'), 500);
 
+            // Always set explicit data-theme attribute to avoid being overridden by prefers-color-scheme
+            document.documentElement.setAttribute('data-theme', theme);
             if (theme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
                 toggle.innerHTML = sunSvg; // show sun to indicate switch to light
                 toggle.title = 'Переключиться на светлую тему';
                 toggle.setAttribute('aria-pressed', 'true');
             } else {
-                document.documentElement.removeAttribute('data-theme');
                 toggle.innerHTML = moonSvg; // show moon to indicate switch to dark
                 toggle.title = 'Переключиться на тёмную тему';
                 toggle.setAttribute('aria-pressed', 'false');
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const saved = localStorage.getItem('theme');
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const initial = saved || (prefersDark ? 'dark' : 'light');
+    const initial = saved || (prefersDark ? 'dark' : 'light');
         applyTheme(initial);
 
         toggle.addEventListener('click', function() {
