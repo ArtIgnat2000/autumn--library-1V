@@ -205,9 +205,11 @@ section > div {
 .search-container input {
     width: 100%;
     padding: 10px 12px;
-    padding-right: 44px; /* space for clear button inside */
+    padding-right: 56px; /* increased space for clear button inside */
     border: 1px solid var(--ios-separator);
     border-radius: 8px;
+    position: relative;
+    z-index: 1; /* make sure input stays below the clear button */
     font-size: 1rem;
     background: var(--ios-gray-light);
     color: var(--ios-text-primary);
@@ -228,14 +230,16 @@ section > div {
     border: none;
     color: var(--ios-text-secondary);
     font-size: 1.1rem;
-    padding: 6px 8px;
+    padding: 8px 10px;
     border-radius: 8px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     transition: background 0.15s ease, color 0.15s ease, transform 0.08s ease;
-    z-index: 2; /* ensure visible above input */
+    z-index: 4; /* ensure visible above input */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    pointer-events: auto;
 }
 
 .search-container .search-clear:hover {
