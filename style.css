@@ -301,6 +301,18 @@ li:hover {
     transform: scale(1.01);
 }
 
+/* Override hover for light theme specifically */
+[data-theme="light"] li:hover {
+    background: #E5E5EA !important;
+    transform: scale(1.01) !important;
+}
+
+/* Override hover for dark theme specifically */
+[data-theme="dark"] li:hover {
+    background: #3A3A3C !important;
+    transform: scale(1.01) !important;
+}
+
 .book-item {
     display: flex;
     align-items: center;
