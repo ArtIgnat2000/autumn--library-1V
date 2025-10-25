@@ -200,12 +200,13 @@ section > div {
     border-radius: 12px;
     border: 0.5px solid var(--ios-separator);
     position: relative;
+    z-index: 0; /* base stacking context */
 }
 
 .search-container input {
     width: 100%;
     padding: 10px 12px;
-    padding-right: 56px; /* increased space for clear button inside */
+    padding-right: 64px; /* increased space for clear button inside */
     border: 1px solid var(--ios-separator);
     border-radius: 8px;
     position: relative;
@@ -226,25 +227,26 @@ section > div {
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0,0,0,0.04);
-    border: none;
-    color: var(--ios-text-secondary);
+    /* brighter, prominent style so it's always visible */
+    background: var(--ios-blue);
+    border: 1px solid rgba(0,0,0,0.08);
+    color: white;
     font-size: 1.1rem;
     padding: 8px 10px;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     transition: background 0.15s ease, color 0.15s ease, transform 0.08s ease;
-    z-index: 4; /* ensure visible above input */
-    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    z-index: 9999; /* ensure visible above input and any stacking contexts */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.14);
     pointer-events: auto;
 }
 
 .search-container .search-clear:hover {
-    background: var(--ios-gray-light);
-    color: var(--ios-text-primary);
+    background: var(--ios-blue-light);
+    color: white;
     transform: scale(1.03);
 }
 
