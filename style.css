@@ -59,8 +59,9 @@ header {
     background: linear-gradient(135deg, var(--ios-blue) 0%, var(--ios-blue-light) 100%);
     color: white;
     text-align: center;
-    /* reduced header height for more compact iOS-like appearance */
-    padding: 24px 20px 18px;
+    /* reduced header height and added border radius like book blocks */
+    padding: 16px 20px 12px;
+    border-radius: 0 0 16px 16px;
     position: relative;
     overflow: hidden;
 }
