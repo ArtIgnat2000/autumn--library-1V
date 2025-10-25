@@ -504,6 +504,10 @@ footer p {
 [data-theme="dark"] .theme-toggle { background: rgba(255,255,255,0.06); color: #fff; }
 
 /* Light mode fixes for iPhone */
+[data-theme="light"] nav {
+    background: rgba(255, 255, 255, 0.95);
+}
+
 [data-theme="light"] nav a {
     background: var(--ios-blue);
     color: white;
