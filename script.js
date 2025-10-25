@@ -2,6 +2,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Плавная прокрутка для навигационных ссылок
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+    // Динамически вычисляем высоту навигации и записываем в CSS-переменную
+    const navElement = document.querySelector('nav');
+    function setNavHeight() {
+        const h = navElement ? navElement.offsetHeight : 64;
+        document.documentElement.style.setProperty('--nav-height', h + 'px');
+    }
+    setNavHeight();
+    window.addEventListener('resize', setNavHeight);
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {

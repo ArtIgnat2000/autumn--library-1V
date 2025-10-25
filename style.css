@@ -14,6 +14,8 @@
     --ios-green: #34C759;
     --ios-purple: #AF52DE;
     --ios-pink: #FF2D92;
+    /* height of the top sticky navigation (used for scroll offset) */
+    --nav-height: 64px;
 }
 
 * {
@@ -35,7 +37,8 @@ header {
     background: linear-gradient(135deg, var(--ios-blue) 0%, var(--ios-blue-light) 100%);
     color: white;
     text-align: center;
-    padding: 60px 20px 40px;
+    /* reduced header height for more compact iOS-like appearance */
+    padding: 24px 20px 18px;
     position: relative;
     overflow: hidden;
 }
@@ -72,21 +75,28 @@ nav {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 0.5px solid var(--ios-separator);
-    padding: 16px 0;
+    /* keep nav compact vertically */
+    padding: 8px 0;
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
+/* Single-line horizontal nav with touch scrolling */
 nav ul {
     list-style: none;
     margin: 0;
-    padding: 0 20px;
+    padding: 6px 12px;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     gap: 8px;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    scrollbar-width: none; /* Firefox */
 }
+
+/* hide webkit scrollbar for a cleaner look */
+nav ul::-webkit-scrollbar { display: none; }
 
 nav li {
     margin: 0;
@@ -115,6 +125,8 @@ section {
     max-width: 1100px;
     margin: 24px auto;
     padding: 0 20px;
+    /* ensure anchor scrolling leaves space for sticky nav */
+    scroll-margin-top: var(--nav-height);
 }
 
 section > div {
@@ -257,12 +269,13 @@ footer p {
 /* Responsive Design */
 @media (max-width: 768px) {
     header {
-        padding: 40px 20px 30px;
+        padding: 18px 16px 14px;
     }
     
+    /* keep nav on one line with horizontal scroll on small screens */
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        padding: 6px 8px;
+        gap: 6px;
     }
     
     nav a {
