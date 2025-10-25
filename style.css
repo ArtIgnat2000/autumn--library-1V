@@ -224,7 +224,7 @@ section > div {
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    background: transparent;
+    background: rgba(0,0,0,0.04);
     border: none;
     color: var(--ios-text-secondary);
     font-size: 1.1rem;
@@ -235,6 +235,7 @@ section > div {
     align-items: center;
     justify-content: center;
     transition: background 0.15s ease, color 0.15s ease, transform 0.08s ease;
+    z-index: 2; /* ensure visible above input */
 }
 
 .search-container .search-clear:hover {
@@ -450,6 +451,44 @@ footer p {
         color: var(--ios-text-primary);
     }
 
+    /* Ensure clear button has a subtle visible base in dark */
+    .search-container .search-clear {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.03);
+    }
+
+
+/* Apply same element-level dark rules when user toggles data-theme="dark" */
+[data-theme="dark"] nav {
+    background: rgba(28, 28, 30, 0.95);
+}
+
+[data-theme="dark"] li:hover {
+    background: #3A3A3C;
+}
+
+[data-theme="dark"] .search-container input {
+    background: #2C2C2E; /* slightly lighter than page bg */
+    color: var(--ios-text-primary);
+    border-color: var(--ios-separator);
+}
+
+[data-theme="dark"] .search-container input::placeholder {
+    color: rgba(235,235,245,0.5);
+}
+
+[data-theme="dark"] .search-container {
+    background: rgba(28,28,30,0.6);
+    border-color: var(--ios-separator);
+}
+
+[data-theme="dark"] .search-container .search-clear {
+    color: rgba(235,235,245,0.8);
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+[data-theme="dark"] .theme-toggle { background: rgba(255,255,255,0.06); color: #fff; }
 /* Mobile contrast tweaks: slightly stronger background and larger clear button for touch */
 @media (max-width: 480px) {
     .search-container { padding: 10px 12px; background: rgba(255,255,255,0.98); }
