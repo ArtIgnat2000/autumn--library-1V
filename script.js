@@ -167,10 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="search-container" style="position:relative;">
                 <input type="text" id="bookSearch" placeholder="Поиск книг...">
                 <button type="button" id="clearSearch" class="search-clear" title="Очистить поиск" aria-label="Очистить поиск">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
+                    Очистить
                 </button>
             </div>
         `;
