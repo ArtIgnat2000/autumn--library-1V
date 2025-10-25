@@ -64,6 +64,9 @@ header {
     border-radius: 0 0 16px 16px;
     position: relative;
     overflow: hidden;
+    /* match width with book sections */
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 /* Theme toggle button in header */
@@ -133,6 +136,10 @@ nav {
     position: sticky;
     top: 0;
     z-index: 100;
+    /* match width with book sections */
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 0 0 12px 12px;
 }
 
 /* Single-line horizontal nav with touch scrolling */
@@ -197,11 +204,13 @@ section > div {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     padding: 12px 16px;
-    margin: 16px 0;
+    margin: 16px auto;
     border-radius: 12px;
     border: 0.5px solid var(--ios-separator);
     position: relative;
     z-index: 0; /* base stacking context */
+    /* match width with book sections */
+    max-width: 1100px;
 }
 
 .search-container input {
