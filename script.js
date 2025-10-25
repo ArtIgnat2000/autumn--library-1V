@@ -166,7 +166,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const searchHTML = `
             <div class="search-container">
                 <input type="text" id="bookSearch" placeholder="Поиск книг...">
-                <button type="button" id="clearSearch" class="search-clear" title="Очистить поиск">✖</button>
+                <button type="button" id="clearSearch" class="search-clear" title="Очистить поиск" aria-label="Очистить поиск">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
             </div>
         `;
 
@@ -213,6 +218,59 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Создаем поиск
     createSearchBox();
+
+    // Тема: переключатель день/ночь (сохранение в localStorage)
+    function initThemeToggle() {
+        const toggle = document.getElementById('themeToggle');
+        if (!toggle) return;
+
+        const sunSvg = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="M4.93 4.93l1.41 1.41"></path>
+                <path d="M17.66 17.66l1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="M4.93 19.07l1.41-1.41"></path>
+                <path d="M17.66 6.34l1.41-1.41"></path>
+            </svg>`;
+
+        const moonSvg = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+            </svg>`;
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                toggle.innerHTML = sunSvg; // show sun to indicate switch to light
+                toggle.title = 'Переключиться на светлую тему';
+                toggle.setAttribute('aria-pressed', 'true');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                toggle.innerHTML = moonSvg; // show moon to indicate switch to dark
+                toggle.title = 'Переключиться на тёмную тему';
+                toggle.setAttribute('aria-pressed', 'false');
+            }
+        }
+
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initial = saved || (prefersDark ? 'dark' : 'light');
+        applyTheme(initial);
+
+        toggle.addEventListener('click', function() {
+            const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+            localStorage.setItem('theme', next);
+        });
+    }
+
+    // Инициализируем переключатель темы
+    initThemeToggle();
     
     console.log('📚 Детская библиотека загружена!');
 });

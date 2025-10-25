@@ -18,6 +18,16 @@
     --nav-height: 64px;
 }
 
+/* Allow explicit theme switching via data-theme attribute */
+[data-theme="dark"] {
+    --ios-background: #1C1C1E;
+    --ios-secondary-background: #000000;
+    --ios-text-primary: #FFFFFF;
+    --ios-text-secondary: #EBEBF5;
+    --ios-gray-light: #2C2C2E;
+    --ios-separator: #38383A;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -41,6 +51,36 @@ header {
     padding: 24px 20px 18px;
     position: relative;
     overflow: hidden;
+}
+
+/* Theme toggle button in header */
+.theme-toggle {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.14);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.12s ease, background 0.12s ease, color 0.12s ease;
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.theme-toggle:active { transform: scale(0.96); }
+
+@media (prefers-color-scheme: dark) {
+    .theme-toggle { background: rgba(255,255,255,0.06); color: #fff; }
 }
 
 header::before {
@@ -394,5 +434,12 @@ footer p {
         background: rgba(255,255,255,0.04);
         color: var(--ios-text-primary);
     }
+
+/* Mobile contrast tweaks: slightly stronger background and larger clear button for touch */
+@media (max-width: 480px) {
+    .search-container { padding: 10px 12px; background: rgba(255,255,255,0.98); }
+    [data-theme="dark"] .search-container { background: rgba(28,28,30,0.75); }
+    .search-container .search-clear { padding: 10px; font-size: 1.2rem; }
+}
 }
 
