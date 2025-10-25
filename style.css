@@ -461,7 +461,7 @@ footer p {
         border: 1px solid rgba(255,255,255,0.03);
     }
 
-
+}
 /* Apply same element-level dark rules when user toggles data-theme="dark" */
 [data-theme="dark"] nav {
     background: rgba(28, 28, 30, 0.95);
@@ -499,5 +499,5 @@ footer p {
     [data-theme="dark"] .search-container { background: rgba(28,28,30,0.75); }
     .search-container .search-clear { padding: 10px; font-size: 1.2rem; }
 }
-}
+
 
