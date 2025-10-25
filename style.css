@@ -506,12 +506,12 @@ footer p {
 /* Light mode fixes for iPhone */
 [data-theme="light"] nav a {
     background: var(--ios-blue);
-    color: #000000;
+    color: white;
 }
 
 [data-theme="light"] nav a:hover, [data-theme="light"] nav a:active {
     background: var(--ios-blue-light);
-    color: #000000;
+    color: white;
 }
 
 [data-theme="light"] .search-container {
