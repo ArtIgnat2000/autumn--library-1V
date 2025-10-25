@@ -490,12 +490,53 @@ footer p {
 }
 
 [data-theme="dark"] .search-container .search-clear {
-    color: rgba(235,235,245,0.8);
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.03);
+    /* Make clear button bright and visible in dark mode */
+    background: var(--ios-blue);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .search-container .search-clear:hover {
+    background: var(--ios-blue-light);
+    color: white;
 }
 
 [data-theme="dark"] .theme-toggle { background: rgba(255,255,255,0.06); color: #fff; }
+
+/* Light mode fixes for iPhone */
+[data-theme="light"] nav a {
+    background: var(--ios-blue);
+    color: #000000;
+}
+
+[data-theme="light"] nav a:hover, [data-theme="light"] nav a:active {
+    background: var(--ios-blue-light);
+    color: #000000;
+}
+
+[data-theme="light"] .search-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: var(--ios-separator);
+}
+
+[data-theme="light"] .search-container input {
+    background: var(--ios-gray-light);
+    color: var(--ios-text-primary);
+    border-color: var(--ios-separator);
+}
+
+[data-theme="light"] .search-container input::placeholder {
+    color: rgba(60,60,67,0.6);
+}
+
+/* Fix read book styling for both themes */
+[data-theme="light"] li.read .book-link {
+    color: var(--ios-text-secondary);
+}
+
+[data-theme="dark"] li.read .book-link {
+    color: var(--ios-text-secondary);
+}
 /* Mobile contrast tweaks: slightly stronger background and larger clear button for touch */
 @media (max-width: 480px) {
     .search-container { padding: 10px 12px; background: rgba(255,255,255,0.98); }
