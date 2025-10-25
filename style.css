@@ -368,11 +368,6 @@ li:hover {
     color: white;
 }
 
-.read-btn.read::before {
-    content: '✓ ';
-    margin-right: 2px;
-}
-
 li.read {
     opacity: 0.7;
 }
