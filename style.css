@@ -18,6 +18,18 @@
     --nav-height: 64px;
 }
 
+/* Smooth theme transition helper - animates properties that depend on CSS variables */
+.theme-transition body,
+.theme-transition header,
+.theme-transition nav,
+.theme-transition section > div,
+.theme-transition .search-container,
+.theme-transition .search-container input,
+.theme-transition li,
+.theme-transition footer {
+    transition: background-color 360ms ease, color 360ms ease, border-color 360ms ease, box-shadow 360ms ease;
+}
+
 /* Allow explicit theme switching via data-theme attribute */
 [data-theme="dark"] {
     --ios-background: #1C1C1E;
@@ -179,9 +191,7 @@ section > div {
 
 /* Search box styles (overrides inline styles from script.js for better theme control) */
 .search-container {
-    display: flex;
-    gap: 8px;
-    align-items: center;
+    display: block;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -189,12 +199,13 @@ section > div {
     margin: 16px 0;
     border-radius: 12px;
     border: 0.5px solid var(--ios-separator);
+    position: relative;
 }
 
 .search-container input {
-    flex: 1 1 auto;
     width: 100%;
     padding: 10px 12px;
+    padding-right: 44px; /* space for clear button inside */
     border: 1px solid var(--ios-separator);
     border-radius: 8px;
     font-size: 1rem;
@@ -209,11 +220,15 @@ section > div {
 }
 
 .search-container .search-clear {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     background: transparent;
     border: none;
     color: var(--ios-text-secondary);
     font-size: 1.1rem;
-    padding: 8px 10px;
+    padding: 6px 8px;
     border-radius: 8px;
     cursor: pointer;
     display: inline-flex;

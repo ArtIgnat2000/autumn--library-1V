@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function createSearchBox() {
         // HTML: input + кнопка очистки
         const searchHTML = `
-            <div class="search-container">
+            <div class="search-container" style="position:relative;">
                 <input type="text" id="bookSearch" placeholder="Поиск книг...">
                 <button type="button" id="clearSearch" class="search-clear" title="Очистить поиск" aria-label="Очистить поиск">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -224,25 +224,35 @@ document.addEventListener('DOMContentLoaded', function() {
         const toggle = document.getElementById('themeToggle');
         if (!toggle) return;
 
+        // More detailed icons (outline vs filled subtle variants)
         const sunSvg = `
+            <!-- Sun (filled with outline rays) -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="4"></circle>
-                <path d="M12 2v2"></path>
-                <path d="M12 20v2"></path>
-                <path d="M4.93 4.93l1.41 1.41"></path>
-                <path d="M17.66 17.66l1.41 1.41"></path>
-                <path d="M2 12h2"></path>
-                <path d="M20 12h2"></path>
-                <path d="M4.93 19.07l1.41-1.41"></path>
-                <path d="M17.66 6.34l1.41-1.41"></path>
+                <circle cx="12" cy="12" r="4" fill="currentColor" opacity="0.95"></circle>
+                <g stroke="currentColor" stroke-width="1.4">
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </g>
             </svg>`;
 
         const moonSvg = `
+            <!-- Moon (outline crescent) -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="none"></path>
+                <path d="M21 12.79A9 9 0 1111.21 3" fill="currentColor" opacity="0.06"></path>
             </svg>`;
 
         function applyTheme(theme) {
+            // animate theme transition by toggling a helper class
+            document.documentElement.classList.add('theme-transition');
+            window.setTimeout(() => document.documentElement.classList.remove('theme-transition'), 500);
+
             if (theme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 toggle.innerHTML = sunSvg; // show sun to indicate switch to light

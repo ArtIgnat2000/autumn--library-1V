@@ -1,0 +1,17 @@
+# Node / editor / OS artifacts
+node_modules/
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Generated
+dist/
+
+# Logs
+npm-debug.log*
+
+# IDE
+.idea/
+
+# System files
+*.log
