@@ -242,7 +242,7 @@ section > div {
     background: var(--ios-blue);
     border: 1px solid rgba(0,0,0,0.08);
     color: white;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     padding: 6px 12px;
     border-radius: 16px;
@@ -581,7 +581,7 @@ footer p {
 @media (max-width: 480px) {
     .search-container { padding: 10px 12px; background: rgba(255,255,255,0.98); }
     [data-theme="dark"] .search-container { background: rgba(28,28,30,0.75); }
-    .search-container .search-clear { padding: 10px; font-size: 1.2rem; }
+    .search-container .search-clear { padding: 10px; font-size: 0.9rem; }
 }
 
 /* Explicit variable overrides for data-theme on :root to ensure JS-applied theme wins over prefers-color-scheme */
